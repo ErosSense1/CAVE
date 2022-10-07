@@ -2,11 +2,14 @@ import {
 	back_Menu,
 	back_MS,
 	canvas,
+	cursor,
 	eco_Button,
 	game_Menu,
 	HEIGHT,
+	lose_Menu,
 	main_Menu,
 	playpause,
+	retry,
 	self_Button,
 	settings_Menu,
 	shoot_Button,
@@ -69,18 +72,44 @@ function game() {
 			weapons.splice(0, 1);
 		}
 	});
-	enemies.forEach((enemy) => {
-		enemy.update();
-	});
-	enemies.forEach((enemy) => {
-		particleCreator.particles.forEach((par) => {
+
+	enemies.forEach((block) => {
+		block.update();
+		if (
+			player.pos.x + player.w > block.pos.x &&
+			player.pos.x < block.pos.x + block.w &&
+			player.pos.y + player.h > block.pos.y &&
+			player.pos.y < block.pos.y + block.h
+		) {
+			game_Menu.style.visibility = 'hidden';
+			lose_Menu.style.visibility = 'visible';
+		}
+		weapons.forEach((bullet) => {
 			if (
-				par.x + par.size < enemy.pos.x &&
-				par.x > enemy.pos.x + enemy.w &&
-				par.y + par.size < enemy.pos.x &&
-				par.y < enemy.pos.y + enemy.h
+				bullet.pos.x > block.pos.x &&
+				bullet.pos.x < block.pos.x + block.w &&
+				bullet.pos.y > block.pos.y &&
+				bullet.pos.y < block.pos.y + block.h
 			) {
-				par.x = 0;
+				block.kill = true;
+				block.pos.y = HEIGHT + 50;
+			}
+		});
+		particleCreator.particles.forEach((particle) => {
+			if (
+				particle.x > block.pos.x &&
+				particle.x < block.pos.x + block.w &&
+				particle.y > block.pos.y &&
+				particle.y < block.pos.y + block.h
+			) {
+				particle.time = 100;
+				particle.color = {
+					r: 255,
+					g: 0,
+					b: 0,
+				};
+				particle.direction.x = block.s;
+				particle.direction.y = 0;
 			}
 		});
 	});
@@ -143,7 +172,7 @@ function game() {
 		if (e.key === 'e') {
 			if (eco_Cooldown <= 0) {
 				particleCreator.create();
-				eco_Cooldown = 5;
+				eco_Cooldown = 3;
 				tuto.style.visibility = 'hidden';
 			}
 		}
@@ -164,7 +193,7 @@ function game() {
 	eco_Button.addEventListener('click', () => {
 		if (eco_Cooldown <= 0) {
 			particleCreator.create();
-			eco_Cooldown = 5;
+			eco_Cooldown = 3;
 		}
 	});
 	self_Button.addEventListener('click', () => {
@@ -194,6 +223,10 @@ playpause.addEventListener('click', () => {
 back_Menu.addEventListener('click', () => {
 	window.location.reload();
 });
+
+retry.addEventListener('click', () => {
+	window.location.reload();
+});
 back_MS.addEventListener('click', () => {
 	main_Menu.style.visibility = 'visible';
 	settings_Menu.style.visibility = 'hidden';
@@ -209,6 +242,8 @@ SETTINGS.addEventListener('click', () => {
 });
 
 canvas.addEventListener('mousedown', (e) => {
+	tuto.style.visibility = 'hidden';
+
 	if (shoot_Cooldown <= 0) {
 		const myAngle = Math.atan2(
 			e.offsetY - player.pos.y + player.h / 2 / 2,
@@ -223,4 +258,9 @@ canvas.addEventListener('mousedown', (e) => {
 		);
 		shoot_Cooldown = 2;
 	}
+});
+window.addEventListener('mousemove', (e) => {
+	cursor.style.visibility = 'visible'
+	cursor.style.top = e.clientY + 1 + 'px';
+	cursor.style.left = e.clientX + 1 + 'px';
 });

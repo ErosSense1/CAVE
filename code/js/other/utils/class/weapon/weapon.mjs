@@ -10,6 +10,8 @@ class Weapon {
 		velocity,
 	) {
 		this.pos = pos;
+		this.x = pos.x;
+		this.y = pos.y;
 		this.radius = radius;
 		this.velocity = velocity;
 	}

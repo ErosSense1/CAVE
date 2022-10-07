@@ -15,11 +15,14 @@ let back_Menu = document.getElementById('back_Menu');
 let back_MS = document.getElementById('back_Menu_Settings');
 let playpause = document.getElementById('pause_unpause');
 let tuto = document.getElementById('tuto');
-
+let retry = document.getElementById('retry');
 // menu buttons
 let main_Menu = document.getElementById('main');
 let game_Menu = document.getElementById('game');
 let settings_Menu = document.getElementById('main_settings');
+let lose_Menu = document.getElementById('lose');
+
+let cursor = document.getElementById('cursor');
 export {
 	canvas,
 	ctx,
@@ -36,4 +39,7 @@ export {
 	tuto,
 	body,
 	shoot_Button,
+	retry,
+	lose_Menu,
+	cursor,
 };
