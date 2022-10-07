@@ -19,7 +19,7 @@ import {
 import { particleCreator } from './other/utils/class/particles/particles.mjs';
 import { player } from './other/utils/class/player/player.mjs';
 import { Weapon } from './other/utils/class/weapon/weapon.mjs';
-import { animate, walkerSpawn } from './other/utils/functions.mjs';
+import { animate, flySpawn, walkerSpawn } from './other/utils/functions.mjs';
 
 // stuff
 let weapons = [];
@@ -68,7 +68,12 @@ function game() {
 			weapon.pos.x < 0 ||
 			weapon.pos.x > WIDTH
 		) {
-			walkerSpawn(enemies);
+			let random = Math.floor(Math.random() * 10);
+			if (random < 5) {
+				walkerSpawn(enemies);
+			} else {
+				flySpawn(enemies);
+			}
 			weapons.splice(0, 1);
 		}
 	});
@@ -260,7 +265,7 @@ canvas.addEventListener('mousedown', (e) => {
 	}
 });
 window.addEventListener('mousemove', (e) => {
-	cursor.style.visibility = 'visible'
+	cursor.style.visibility = 'visible';
 	cursor.style.top = e.clientY + 1 + 'px';
 	cursor.style.left = e.clientX + 1 + 'px';
 });
