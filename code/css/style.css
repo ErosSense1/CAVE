@@ -1,0 +1,171 @@
+@font-face {
+	font-family: 'Press2P';
+	src: url('./PressStart2P-Regular.ttf');
+}
+* {
+	margin: unset;
+	color: white !important;
+	font-family: 'Press2P';
+	font-size: 15px;
+	text-shadow: -2px 0 0 #fdff2a, -4px 0 0 #df4a42, 2px 0 0 #91fcfe,
+		4px 0 0 #4405fc !important;
+}
+body {
+	background-color: black;
+}
+canvas {
+	position: absolute;
+	background-color: black;
+	border: 2px solid white;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+#full {
+	border: unset;
+	width: 60px;
+	height: 60px;
+	visibility: visible;
+}
+#tuto {
+	position: absolute;
+	background-color: black;
+	/* border: 2px solid white; */
+	text-align: center;
+	width: 60%;
+	top: 50%;
+	left: 50%;
+	font-size: 25px;
+	transform: translate(-50%, -50%);
+}
+div {
+	position: absolute;
+}
+
+/* buttons */
+button {
+	width: 100px;
+	height: 100px;
+	border: 2px solid;
+	color: white;
+	background-color: black;
+	font-size: 40px;
+	text-align: center;
+}
+#back_Menu {
+	width: 225px;
+}
+#pause_unpause {
+	width: 250px;
+}
+#buttons {
+	position: absolute;
+	top: 87%;
+	left: 4.5%;
+}
+
+/* text-buttons */
+#self_ {
+	top: 80px;
+	left: 160px;
+}
+#shoot_ {
+	top: 80px;
+	left: 245px;
+}
+#eco_ {
+	top: 80px;
+	left: 40px;
+}
+
+/* menus */
+#game {
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+}
+
+/* main */
+#main {
+	width: 100%;
+	height: 100%;
+}
+#main_settings {
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+}
+
+/* settings */
+#back_Menu_Settings {
+	width: 225px;
+}
+
+/* main menu */
+#play {
+	position: absolute;
+	/* border: unset; */
+	width: 400px;
+	height: 150px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 75px;
+	text-shadow: -2px 0 0 #fdff2a, -4px 0 0 #df4a42, 2px 0 0 #91fcfe,
+		4px 0 0 #4405fc !important;
+}
+#troll {
+	position: absolute;
+	/* border: unset; */
+	width: 800px;
+	height: 150px;
+	top: 50%;
+	left: 50%;
+	text-align: center;
+	transform: translate(-50%, -50%);
+	font-size: 75px;
+	text-shadow: -2px 0 0 #fdff2a, -4px 0 0 #df4a42, 2px 0 0 #91fcfe,
+		4px 0 0 #4405fc !important;
+}
+#settings {
+	position: absolute;
+	width: 350px;
+	height: 100px;
+	top: 70%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 40px;
+	text-shadow: -2px 0 0 #fdff2a, -4px 0 0 #df4a42, 2px 0 0 #91fcfe,
+		4px 0 0 #4405fc !important;
+}
+#play:hover {
+	color: blue !important;
+	background-color: white;
+	text-shadow: none !important;
+	border: 5px solid black;
+}
+#settings:hover {
+	color: blue !important;
+	background-color: white;
+	text-shadow: none !important;
+	border: 5px solid black;
+}
+
+#back_Menu:hover {
+	color: blue !important;
+	background-color: white;
+	text-shadow: none !important;
+	border: 5px solid black;
+}
+#pause_unpause:hover {
+	color: blue !important;
+	background-color: white;
+	text-shadow: none !important;
+	border: 5px solid black;
+}
+#back_Menu_Settings:hover {
+	color: blue !important;
+	background-color: white;
+	text-shadow: none !important;
+	border: 5px solid black;
+}
