@@ -1,4 +1,11 @@
-import { ctx, game_Menu, HEIGHT, lose_Menu } from '../../../../main/main.mjs';
+import {
+	charge,
+	ctx,
+	game_Menu,
+	HEIGHT,
+	lose_Menu,
+	shoot,
+} from '../../../../main/main.mjs';
 
 class Fly {
 	constructor(pos = { x: 0, y: 0 }, w, h, target) {
@@ -16,7 +23,7 @@ class Fly {
 	}
 	update() {
 		this.time--;
-		if (this.time > -300 && !this.kill) {
+		if (this.time > -250 && !this.kill) {
 			this.draw();
 			if (this.pos.x + this.w < this.target.pos.x + this.target.w / 2) {
 				this.pos.x += 1;
@@ -24,14 +31,16 @@ class Fly {
 			if (this.pos.x > this.target.pos.x - this.target.w / 2) {
 				this.pos.x -= 1;
 			}
+			if (this.time < 200) {
+				charge.play();
+			}
 			if (this.time < 0) {
+				shoot.play();
 				ctx.fillStyle = 'white';
 				ctx.fillRect(this.pos.x, this.pos.y, this.w, HEIGHT);
 				if (
-					!(
-						this.target.pos.x + this.target.w < this.pos.x &&
-						this.pos.x > this.target.pos.x + this.w
-					)
+					this.target.pos.x + this.target.w < this.pos.x &&
+					this.pos.x > this.target.pos.x + this.w
 				) {
 					game_Menu.style.visibility = 'hidden';
 					lose_Menu.style.visibility = 'visible';
@@ -39,6 +48,8 @@ class Fly {
 			}
 		} else {
 			this.pos.y = HEIGHT * 2;
+			shoot.pause();
+			charge.pause();
 		}
 	}
 }

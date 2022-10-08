@@ -10,6 +10,7 @@
 	text-shadow: -2px 0 0 #fdff2a, -4px 0 0 #df4a42, 2px 0 0 #91fcfe,
 		4px 0 0 #4405fc !important;
 	cursor: none;
+	overflow: hidden;
 }
 #cursor {
 	position: absolute;

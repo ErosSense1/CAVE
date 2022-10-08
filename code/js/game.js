@@ -248,7 +248,6 @@ SETTINGS.addEventListener('click', () => {
 
 canvas.addEventListener('mousedown', (e) => {
 	tuto.style.visibility = 'hidden';
-
 	if (shoot_Cooldown <= 0) {
 		const myAngle = Math.atan2(
 			e.offsetY - player.pos.y + player.h / 2 / 2,

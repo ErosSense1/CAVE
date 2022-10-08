@@ -22,6 +22,10 @@ let game_Menu = document.getElementById('game');
 let settings_Menu = document.getElementById('main_settings');
 let lose_Menu = document.getElementById('lose');
 
+// sfx
+let charge = new Audio('code/css/charge.mp3');
+let shoot = new Audio('code/css/shoot.mp3');
+
 let cursor = document.getElementById('cursor');
 export {
 	canvas,
@@ -42,4 +46,6 @@ export {
 	retry,
 	lose_Menu,
 	cursor,
+	charge,
+	shoot
 };
