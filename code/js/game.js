@@ -250,8 +250,8 @@ canvas.addEventListener('mousedown', (e) => {
 	tuto.style.visibility = 'hidden';
 	if (shoot_Cooldown <= 0) {
 		const myAngle = Math.atan2(
-			e.clientY - player.pos.y + player.h / 2 / 2,
-			e.clientX - player.pos.x + player.w / 2,
+			e.screenY - player.pos.y + player.h / 2 / 2,
+			e.screenX - player.pos.x + player.w / 2,
 		);
 		weapons.push(
 			new Weapon(
